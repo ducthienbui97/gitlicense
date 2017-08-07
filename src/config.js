@@ -27,6 +27,7 @@ const server = {
 }
 const badge = {
     errorBadge: path.join(__dirname,'../public/problem-unknown-red.svg'),
+    font: path.join(__dirname,'../public/OpenSans/OpenSans-ExtraBold.ttf'),
     returnType: 'image/svg+xml',
     defaultColor: 'brightgreen'
 }

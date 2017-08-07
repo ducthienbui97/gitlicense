@@ -1,5 +1,7 @@
 const axios = require('axios');
 const base64 = require('base-64');
+const config = require('./config');
+const badge = require('gh-badges');
 const getLicense = (account, repo, next) =>{
     const githubApiUrl = 'https://api.github.com/repos/' + account + '/'+ repo;
     axios.get(githubApiUrl + '/contents/.gitlicense')
@@ -30,13 +32,21 @@ const getLicense = (account, repo, next) =>{
 }
 
 const getBadge = (license, color, next) =>{
-    const shieldsUrl = "https://img.shields.io/badge/license-"+ license.split('-').join('--') + "-" + color + ".svg";
-    axios.get(shieldsUrl)
-    .then((res) =>{
-        next(null,res.data);
-    })
-    .catch((err) =>{
-        next(err,null);
+    badge.loadFont(config.badge.font, (err)=>{
+        if(err){
+            console.log(err);
+            next(err,null);
+        }
+        else{
+            badge({ text: ["license", license], colorscheme: color, template: "flat" },(svg,err) =>{
+                if(err){
+                    next(err,null);
+                }
+                else{
+                    next(null,svg);
+                }
+            })
+        }
     })
 }
 module.exports = {
