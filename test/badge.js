@@ -61,8 +61,8 @@ lab.experiment("Get badge", () => {
         });
     })
     lab.test("server return value with color = random",{timeout: 5000}, (done) => {
-        const user = 'ducthienbui97'; //random user
-        const repo = 'gitlicense'; //random repo
+        const user = 'ducthienbui97';
+        const repo = 'gitlicense';
         const color = Math.random().toString(36).slice(2);
         const options = {
             method: "GET",

@@ -8,7 +8,7 @@ const getLicense = (account, repo, next) =>{
     if(process.env.GITHUB_ID){
         OAuth2 = '?client_id='+process.env.GITHUB_ID+'&client_secret='+process.env.GITHUB_SECRET; //rate limit
     }
-    axios.get(githubApiUrl + '/contents/.gitlicense'+addition)
+    axios.get(githubApiUrl + '/contents/.gitlicense'+ OAuth2)
     .then((res) => {
         content = JSON.parse(base64.decode(res.data.content));
         for(let license in content){
@@ -20,7 +20,7 @@ const getLicense = (account, repo, next) =>{
             }
         })
     .catch((err) => {
-        axios.get(githubApiUrl + '/license' + addition,{
+        axios.get(githubApiUrl + '/license' + OAuth2,{
             headers: {'Accept':'application/vnd.github.drax-preview+json'}
         })
         .then((res) =>{
