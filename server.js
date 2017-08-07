@@ -14,7 +14,7 @@ const server = new hapi.Server({
 });
 
 server.connection({
-    host: process.env.HOST || 'localhost',
+    host: process.env.HOST || '0.0.0.0',
     port: process.env.PORT || 3000,
     router: {
         isCaseSensitive: false,
