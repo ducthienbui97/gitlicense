@@ -1,54 +1,112 @@
 const hapi = require('hapi');
 const axios = require('axios');
 const path = require('path');
-const server = new hapi.Server();
+const base64 = require('base-64');
+
+const server = new hapi.Server({
+    cache : [{
+            name      : 'diskCache',
+            engine    : require('catbox-disk'),
+            cachePath: path.join(__dirname,'cache'),
+            cleanEvery: 86400000,
+            partition : 'cache'
+    }]
+});
 
 server.connection({
     host: process.env.HOST || '0.0.0.0',
-    port: process.env.PORT || 8080,
-    routes: {
-            files: {
-                relativeTo: path.join(__dirname, 'public')
-            }
-        }
+    port: process.env.PORT || 8080
 });
+
 server.register(require('inert'), (err) => {
     if(err)
         throw err;
-})
-server.register(require('vision'), (err) => {
-    if(err)
-        throw err;
-    server.views({
-        engines: {
-            html: require('handlebars')
-        },
-        relativeTo: __dirname,
-        path: 'templates'
-    });
 });
+
+
+const getLicense = (account, repo, next) =>{
+    const githubApiUrl = 'https://api.github.com/repos/' + account + '/'+ repo;
+    axios.get(githubApiUrl + '/contents/.gitlicense')
+    .then((res) => {
+        content = JSON.parse(base64.decode(res.data.content));
+        for(let license in content){
+            const url = content[license];
+            next(null,{
+                license: license,
+                url: url
+                });
+            }
+        })
+    .catch((err) => {
+        axios.get(githubApiUrl + '/license',{
+            headers: {'Accept':'application/vnd.github.drax-preview+json'}
+        })
+        .then((res) =>{
+            next(null,{
+                license: res.data.license.spdx_id,
+                url: res.data.html_url
+            });
+        })
+        .catch((err) => {
+            next(err,null);
+        });
+    })
+}
+
+server.method('getLicense', getLicense,{
+    cache:{
+        cache:'diskCache',
+        expiresIn: 86400000,
+        generateTimeout: false
+    }
+});
+
+const getBadge = (license, color, next) =>{
+    const shieldsUrl = "https://img.shields.io/badge/license-"+ license + "-" + color + ".svg";
+    axios.get(shieldsUrl)
+    .then((res) =>{
+        next(null,res.data);
+    })
+    .catch((err) =>{
+        next(err,null);
+    })
+}
+
+server.method('getBadge', getBadge,{
+    cache:{
+        cache:'diskCache',
+        expiresIn: 86400000,
+        generateTimeout: false
+    }
+});
+const errorBadge = path.join(__dirname,'public/problem-unknown-red.svg');
 server.route({
     path: '/{account}/{repo}/badge',
     method: 'GET',
     handler: function(request, reply) {
-        axios.get('https://api.github.com/repos/' + request.params.account + '/'+ request.params.repo + '/license',{
-            headers: {'Accept':'application/vnd.github.drax-preview+json'}
+        const {account,repo} = request.params;
+        const color = request.query.color || "brightgreen";
+        server.methods.getLicense(account,repo, (err,result) => {
+            if(err){
+                reply.file(errorBadge).type('image/svg+xml');
+            }
+            else{
+                server.methods.getBadge(result.license, color,(err, result) =>{
+                    if(err){
+                        reply.file(errorBadge).type('image/svg+xml');
+                    }
+                    else{
+                        reply(result).type('image/svg+xml');
+                    }
+                })
+            }
         })
-        .then((res) =>{
-            axios.get('https://img.shields.io/badge/License-' + res.data.license.spdx_id + '-brightgreen.svg')
-            .then((res)=>{
-                reply(res.data).type('image/svg+xml')
-            })
-            .catch((err)=>{
-                reply.file('problem-unknown-red.svg').type('image/svg+xml');
-            });
-        })
-        .catch((err) => {
-            reply.file('problem-unknown-red.svg').type('image/svg+xml');
-        });
     }
 });
 
-server.start(function() {
-    console.log('Server started: ' + server.info.uri);
+server.start(function(err) {
+    if(err)
+        console.log(err);
+    else
+        console.log('Server started: ' + server.info.uri);
 });

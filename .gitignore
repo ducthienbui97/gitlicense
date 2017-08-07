@@ -1,3 +1,5 @@
+# Cached
+cached/*
 # Logs
 logs
 *.log
