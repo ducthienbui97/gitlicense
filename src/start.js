@@ -5,3 +5,5 @@ server.start(function(err) {
     else
         console.log('Server started: ' + server.info.uri);
 });
+
+module.exports = server;

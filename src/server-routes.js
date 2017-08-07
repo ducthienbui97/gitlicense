@@ -42,7 +42,7 @@ server.route({
 })
 
 server.route({
-    path: '/',
+    path: '/{path*}',
     method: 'GET',
     handler: (request, reply) =>{
         reply("Hello World");
