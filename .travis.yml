@@ -5,6 +5,7 @@ node_js:
 install:
   - npm install -g codecov
   - npm install -g istanbul
+  - npm install
 script:
   - istanbul cover ./node_modules/lab/bin/lab --report lcovonly  -- -l && codecov
 branches:

@@ -23,3 +23,4 @@ Html
 .. image:: https://gitlicense.azurewebsites.net/:user/:repo/badge
  :target: https://gitlicense.azurewebsites.net/:user/:repo/license
 ```
+
