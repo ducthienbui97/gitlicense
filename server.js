@@ -23,7 +23,6 @@ server.register(require('inert'), (err) => {
         throw err;
 });
 
-
 const getLicense = (account, repo, next) =>{
     const githubApiUrl = 'https://api.github.com/repos/' + account + '/'+ repo;
     axios.get(githubApiUrl + '/contents/.gitlicense')
@@ -79,6 +78,7 @@ server.method('getBadge', getBadge,{
         generateTimeout: false
     }
 });
+
 const errorBadge = path.join(__dirname,'public/problem-unknown-red.svg');
 server.route({
     path: '/{account}/{repo}/badge',
@@ -119,6 +119,13 @@ server.route({
     }
 })
 
+server.route({
+    path: '/',
+    method: 'GET',
+    handler: (request, reply) =>{
+        reply("Hello World");
+    }
+})
 server.start(function(err) {
     if(err)
         console.log(err);
