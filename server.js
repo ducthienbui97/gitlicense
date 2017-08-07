@@ -83,7 +83,7 @@ const errorBadge = path.join(__dirname,'public/problem-unknown-red.svg');
 server.route({
     path: '/{account}/{repo}/badge',
     method: 'GET',
-    handler: function(request, reply) {
+    handler: (request, reply) => {
         const {account,repo} = request.params;
         const color = request.query.color || "brightgreen";
         server.methods.getLicense(account,repo, (err,result) => {
@@ -103,6 +103,21 @@ server.route({
         })
     }
 });
+
+server.route({
+    path: '/{account}/{repo}/license',
+    method: 'GET',
+    handler: (request, reply) =>{
+        const {account, repo} = request.params;
+        server.methods.getLicense(account, repo, (err,result) =>{
+            if(err){
+                reply.redirect('/');
+            }else{
+                reply.redirect(result.url);
+            }
+        })
+    }
+})
 
 server.start(function(err) {
     if(err)
