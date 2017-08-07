@@ -3,10 +3,12 @@
 [![Build Status](https://travis-ci.org/ducthienbui97/gitlicense.svg?branch=master)](https://travis-ci.org/ducthienbui97/gitlicense)
 [![codecov](https://codecov.io/gh/ducthienbui97/gitlicense/branch/master/graph/badge.svg)](https://codecov.io/gh/ducthienbui97/gitlicense)
 
-Git License give you a easy way to display license on github.
-We use github license api to get license of you repo.
+License badge for your Github repos.
 
 ## Usage
+
+Git License give you a easy way to display license on github.
+We use github license api to get license of you repo.
 
 #### Markdown
 
@@ -41,7 +43,8 @@ Example can be found in [this file](.gitlicense)
 ## TODO
 - Buy a domain
 - Add more test
-- Frontend
+- Home page
 
 ## Credit
 - [Shields.io](https://github.com/badges) for the badges
+- [Hapi](https://github.com/hapijs) for server framwork
