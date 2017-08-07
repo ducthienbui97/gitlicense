@@ -14,8 +14,13 @@ const server = new hapi.Server({
 });
 
 server.connection({
-    host: process.env.HOST || '0.0.0.0',
-    port: process.env.PORT || 8080
+    host: process.env.HOST || 'localhost',
+    port: process.env.PORT || 3000,
+    router: {
+        isCaseSensitive: false,
+        stripTrailingSlash: true
+    },
+    routes: {cors: true}
 });
 
 server.register(require('inert'), (err) => {
@@ -61,7 +66,7 @@ server.method('getLicense', getLicense,{
 });
 
 const getBadge = (license, color, next) =>{
-    const shieldsUrl = "https://img.shields.io/badge/license-"+ license + "-" + color + ".svg";
+    const shieldsUrl = "https://img.shields.io/badge/license-"+ license.split('-').join('--') + "-" + color + ".svg";
     axios.get(shieldsUrl)
     .then((res) =>{
         next(null,res.data);
@@ -88,11 +93,13 @@ server.route({
         const color = request.query.color || "brightgreen";
         server.methods.getLicense(account,repo, (err,result) => {
             if(err){
+                console.log("xxx");
                 reply.file(errorBadge).type('image/svg+xml');
             }
             else{
                 server.methods.getBadge(result.license, color,(err, result) =>{
                     if(err){
+                        console.log("YYY");
                         reply.file(errorBadge).type('image/svg+xml');
                     }
                     else{
