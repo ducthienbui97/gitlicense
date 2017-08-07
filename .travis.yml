@@ -11,6 +11,4 @@ script:
 branches:
   only:
     - master
-deploy:
-  provider: azure_web_apps
 
