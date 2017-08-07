@@ -1,19 +1,20 @@
 const server = require('./server-methods');
 const config = require('./config');
+const util = require('./util');
 
 server.route({
     path: '/{account}/{repo}/badge',
     method: 'GET',
     handler: (request, reply) => {
         const { account, repo } = request.params;
-        const { errorBadge, returnType, defaultColor } = config.badge;
-        const color = request.query.color || defaultColor;
-        server.methods.getLicense(account,repo, (err,result) => {
+        const { errorBadge, returnType } = config.badge;
+        const color = util.getColor(request.query.color);
+        server.methods.getLicense(account, repo, (err,result) => {
             if(err){
                 reply.file(errorBadge).type(returnType);
             }
             else{
-                server.methods.getBadge(result.license, color,(err, result) =>{
+                server.methods.getBadge(result.license, color.colorB,(err, result) =>{
                     if(err){
                         reply.file(errorBadge).type(returnType);
                     }

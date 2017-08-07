@@ -26,10 +26,22 @@ const server = {
     }]
 }
 const badge = {
-    errorBadge: path.join(__dirname,'../public/problem-unknown-red.svg'),
-    font: path.join(__dirname,'../public/OpenSans/OpenSans-ExtraBold.ttf'),
+    errorBadge: path.join(__dirname,'../assets/problem-unknown-red.svg'),
+    font: path.join(__dirname,'../assets/OpenSans/OpenSans-ExtraBold.ttf'),
     returnType: 'image/svg+xml',
-    defaultColor: 'brightgreen'
+    colors: {
+        "brightgreen":    { "colorB": "#4c1" },
+        "green":          { "colorB": "#97CA00" },
+        "yellow":         { "colorB": "#dfb317" },
+        "yellowgreen":    { "colorB": "#a4a61d" },
+        "orange":         { "colorB": "#fe7d37" },
+        "red":            { "colorB": "#e05d44" },
+        "blue":           { "colorB": "#007ec6" },
+        "grey":           { "colorB": "#555" },
+        "gray":           { "colorB": "#555" },
+        "lightgrey":      { "colorB": "#9f9f9f" },
+        "lightgray":      { "colorB": "#9f9f9f" }
+    }
 }
 
 module.exports = {

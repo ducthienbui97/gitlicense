@@ -4,7 +4,11 @@ const config = require('./config');
 const badge = require('gh-badges');
 const getLicense = (account, repo, next) =>{
     const githubApiUrl = 'https://api.github.com/repos/' + account + '/'+ repo;
-    axios.get(githubApiUrl + '/contents/.gitlicense')
+    let OAuth2 = '';
+    if(process.env.GITHUB_ID){
+        OAuth2 = '?client_id='+process.env.GITHUB_ID+'&client_secret='+process.env.GITHUB_SECRET; //rate limit
+    }
+    axios.get(githubApiUrl + '/contents/.gitlicense'+addition)
     .then((res) => {
         content = JSON.parse(base64.decode(res.data.content));
         for(let license in content){
@@ -16,7 +20,7 @@ const getLicense = (account, repo, next) =>{
             }
         })
     .catch((err) => {
-        axios.get(githubApiUrl + '/license',{
+        axios.get(githubApiUrl + '/license' + addition,{
             headers: {'Accept':'application/vnd.github.drax-preview+json'}
         })
         .then((res) =>{
@@ -34,11 +38,10 @@ const getLicense = (account, repo, next) =>{
 const getBadge = (license, color, next) =>{
     badge.loadFont(config.badge.font, (err)=>{
         if(err){
-            console.log(err);
             next(err,null);
         }
         else{
-            badge({ text: ["license", license], colorscheme: color, template: "flat" },(svg,err) =>{
+            badge({ text: ["license", license], template: "flat", colorB: color},(svg,err) =>{
                 if(err){
                     next(err,null);
                 }
@@ -49,7 +52,13 @@ const getBadge = (license, color, next) =>{
         }
     })
 }
+
+const getColor = (query) =>{
+    const color = query || "brightgreen";
+    return config.badge.colors[color] ||{"colorB": color};
+}
 module.exports = {
     getBadge,
-    getLicense
+    getLicense,
+    getColor
 }
