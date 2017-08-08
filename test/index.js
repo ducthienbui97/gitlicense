@@ -11,7 +11,7 @@ lab.experiment("Get home page", () => {
         };
         server.inject(options, function(response) {
             expect(response.statusCode).to.equal(200);
-            expect(response.result).to.equal("Hello World"); //will change later
+            expect(response.result).to.include('Hello world'); //will change later
             done();
         });
     });

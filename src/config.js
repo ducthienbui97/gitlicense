@@ -26,8 +26,8 @@ const server = {
     }]
 }
 const badge = {
-    errorBadge: path.join(__dirname,'../assets/problem-unknown-red.svg'),
-    font: path.join(__dirname,'../assets/OpenSans/OpenSans-ExtraBold.ttf'),
+    errorBadge: path.join(__dirname,'../public/assets/problem-unknown-red.svg'),
+    font: path.join(__dirname,'../public/assets/OpenSans/OpenSans-ExtraBold.ttf'),
     returnType: 'image/svg+xml',
     colors: {
         "brightgreen":    { "colorB": "#4c1" },
@@ -44,9 +44,11 @@ const badge = {
     }
 }
 
+const homePage = path.join(__dirname, '../public/README.html');
 module.exports = {
     server,
     serverMethod,
     connection,
-    badge
+    badge,
+    homePage
 }
