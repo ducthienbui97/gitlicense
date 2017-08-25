@@ -3,22 +3,48 @@ const config = require('./config');
 const util = require('./util');
 
 server.route({
-    path: '/{account}/{repo}/badge',
+    path: '/',
+    method: 'GET',
+    handler: (request, reply) => {
+        reply.file(config.staticFiles.homePage);
+    }
+})
+
+server.route({
+    path: '/{path*}',
+    method: 'GET',
+    handler: (request, reply) => {
+        reply.redirect('/');
+    }
+})
+
+server.route({
+    path: '/assets/{path*}',
+    method: 'GET',
+    handler: {
+        directory: {
+            path: config.staticFiles.assets,
+            listing: false,
+            index: false
+        }
+    }
+})
+
+server.route({
+    path: '/badge/{account}/{repo}',
     method: 'GET',
     handler: (request, reply) => {
         const { account, repo } = request.params;
         const { errorBadge, returnType } = config.badge;
         const color = util.getColor(request.query.color);
-        server.methods.getLicense(account, repo, (err,result) => {
-            if(err){
+        server.methods.getLicense(account, repo, (err, result) => {
+            if (err) {
                 reply.file(errorBadge).type(returnType);
-            }
-            else{
-                server.methods.getBadge(result.license, color.colorB,(err, result) =>{
-                    if(err){
+            } else {
+                server.methods.getBadge(result.license, color.colorB, (err, result) => {
+                    if (err) {
                         reply.file(errorBadge).type(returnType);
-                    }
-                    else{
+                    } else {
                         reply(result).type(returnType);
                     }
                 })
@@ -28,14 +54,14 @@ server.route({
 });
 
 server.route({
-    path: '/{account}/{repo}/license',
+    path: '/license/{account}/{repo}',
     method: 'GET',
-    handler: (request, reply) =>{
+    handler: (request, reply) => {
         const { account, repo } = request.params;
-        server.methods.getLicense(account, repo, (err,result) =>{
-            if(err){
+        server.methods.getLicense(account, repo, (err, result) => {
+            if (err) {
                 reply.redirect('/');
-            }else{
+            } else {
                 reply.redirect(result.url);
             }
         })
@@ -43,12 +69,11 @@ server.route({
 })
 
 server.route({
-    path: '/{path*}',
+    path: '/repository/{account}/{repo}',
     method: 'GET',
-    handler: (request, reply) =>{
-        reply("Hello world");
+    handler: (request, reply) => {
+        const { account, repo } = request.params;
+        reply(account + "/" + repo)
     }
 })
-
-
 module.exports = server;
