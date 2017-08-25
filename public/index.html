@@ -21,11 +21,19 @@
                     <p class="lead">
                         <a href="license/ducthienbui97/gitlicense/">
                             <img src="badge/ducthienbui97/gitlicense/" />
+                            <img src="badge/ducthienbui97/gitlicense?color=red" />
+                            <img src="badge/ducthienbui97/gitlicense?color=blue" />
                         </a>
                     </p>
                     <form onsubmit="return search();">
-                        <input type="text" id="form-input" placeholder="github username/repo">
-                        <button type="submit" class="btn btn-secondary"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        <div class="input-group">
+                            <input type="text" id="form-input" placeholder="github username/repo" class="form-control">
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-secondary">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </span>
+                        </div>
                     </form>
                 </div>
                 <div class="mastfoot">

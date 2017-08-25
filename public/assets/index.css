@@ -21,7 +21,7 @@ a:hover {
     text-shadow: none;
     /* Prevent inheritance from `body` */
     background-color: #fff;
-    border: .05rem solid #fff;
+    border: solid #fff;
 }
 
 
