@@ -41,6 +41,12 @@ body {
     text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
 }
 
+textarea {
+    resize: none;
+    overflow: hidden;
+    height: 5 rem;
+}
+
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 
@@ -62,6 +68,10 @@ body {
 .cover-container {
     margin-right: auto;
     margin-left: auto;
+}
+
+.input-group {
+    padding-bottom: 5rem;
 }
 
 

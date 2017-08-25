@@ -1,0 +1,27 @@
+<h1 class="cover-heading">
+    {{account}}/{{repo}}
+</h1>
+<a href="https://gitlicense.com/license/{{account}}/{{repo}}/">
+    <img src="https://gitlicense.com/badge/{{account}}/{{repo}}/" />
+    <img src="https://gitlicense.com/badge/{{account}}/{{repo}}?color=red" />
+    <img src="https://gitlicense.com/badge/{{account}}/{{repo}}?color=blue" />
+</a>
+<h2>Markdown:</h2>
+<div class="input-group">
+    <textarea class="form-control" readonly>
+[![GitLicense](https://gitlicense.com/badge/{{account}}/{{repo}})](https://gitlicense.com/license/{{account}}/{{repo}})
+    </textarea>
+</div>
+<h2>reStructuredText:</h2>
+<div class="input-group">
+    <textarea class="form-control" readonly>
+.. image:: https://gitlicense.com/badge/{{account}}/{{repo}}
+  :target: https://gitlicense.com/license/{{account}}/{{repo}}
+    </textarea>
+</div>
+<h2>HTML:</h2>
+<div class="input-group">
+    <textarea class="form-control" readonly>
+&lt;a href='https://gitlicense.com/license/{{account}}/{{repo}}'&gt;&lt;img src='https://gitlicense.com/badge/{{account}}/{{repo}}'/&gt;&lt;/a&gt;
+    </textarea>
+</div>

@@ -1,0 +1,29 @@
+<h1 class="cover-heading">
+    Git License</h1>
+<p class="lead">Simple way to display your license badge.</p>
+<p class="lead">
+    <a href="license/ducthienbui97/gitlicense/">
+        <img src="badge/ducthienbui97/gitlicense/" />
+        <img src="badge/ducthienbui97/gitlicense?color=red" />
+        <img src="badge/ducthienbui97/gitlicense?color=blue" />
+    </a>
+</p>
+<form onsubmit="return search();">
+    <div class="input-group">
+        <input type="text" id="form-input" placeholder="github username/repo" class="form-control">
+        <span class="input-group-btn">
+            <button type="submit" class="btn btn-secondary">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </span>
+    </div>
+</form>
+
+<script>
+    function search() {
+        infos = document.getElementById('form-input').value.split("/");
+        if (infos.length === 2)
+            location = 'repository/' + infos[0] + '/' + infos[1];
+        return false;
+    }
+</script>
