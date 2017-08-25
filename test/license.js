@@ -4,12 +4,12 @@ const server = require('../src/start');
 const lab = exports.lab = require('lab').script();
 
 lab.experiment("Get license url", () => {
-    lab.test("server to redirect to home with random repo",{timeout: 5000}, (done) => {
+    lab.test("server to redirect to home with random repo", { timeout: 5000 }, (done) => {
         const user = Math.random().toString(36).slice(2); //random user
         const repo = Math.random().toString(36).slice(2); //random repo
         const options = {
             method: "GET",
-            url: "/"+user+"/"+repo+"/license"
+            url: "/license/" + user + "/" + repo
         };
         server.inject(options, function(response) {
             expect(response.statusCode).to.equal(302);
@@ -17,12 +17,12 @@ lab.experiment("Get license url", () => {
             done();
         });
     });
-    lab.test("server to return svg file with this repo",{timeout: 5000}, (done) => {
+    lab.test("server to return svg file with this repo", { timeout: 5000 }, (done) => {
         const user = 'ducthienbui97'; //random user
         const repo = 'gitlicense'; //random repo
         const options = {
             method: "GET",
-            url: "/"+user+"/"+repo+"/license"
+            url: "/license/" + user + "/" + repo
         };
         server.inject(options, function(response) {
             expect(response.statusCode).to.equal(302);
