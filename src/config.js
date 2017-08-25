@@ -44,10 +44,7 @@ const badge = {
     }
 }
 
-const staticFiles = {
-    homePage: path.join(__dirname, '../public/index.html'),
-    assets: path.join(__dirname, '../public/assets')
-}
+const staticFiles = path.join(__dirname, '../public/assets');
 module.exports = {
     server,
     serverMethod,

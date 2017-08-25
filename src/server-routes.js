@@ -6,7 +6,7 @@ server.route({
     path: '/',
     method: 'GET',
     handler: (request, reply) => {
-        reply.file(config.staticFiles.homePage);
+        reply.view('index');
     }
 })
 
@@ -23,7 +23,7 @@ server.route({
     method: 'GET',
     handler: {
         directory: {
-            path: config.staticFiles.assets,
+            path: config.staticFiles,
             listing: false,
             index: false
         }
@@ -73,7 +73,7 @@ server.route({
     method: 'GET',
     handler: (request, reply) => {
         const { account, repo } = request.params;
-        reply(account + "/" + repo)
+        reply.view('template', { account, repo });
     }
 })
 module.exports = server;
