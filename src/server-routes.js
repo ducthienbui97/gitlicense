@@ -6,7 +6,9 @@ server.route({
     path: '/',
     method: 'GET',
     handler: (request, reply) => {
-        reply.view('index');
+        const { host } = request.info;
+        const protocol = request.headers['x-forwarded-proto'] || request.connection.info.protocol
+        reply.view('index', { host, protocol });
     }
 })
 
@@ -73,7 +75,9 @@ server.route({
     method: 'GET',
     handler: (request, reply) => {
         const { account, repo } = request.params;
-        reply.view('template', { account, repo });
+        const { host } = request.info;
+        const protocol = request.headers['x-forwarded-proto'] || request.connection.info.protocol
+        reply.view('template', { account, repo, host, protocol });
     }
 })
 module.exports = server;
