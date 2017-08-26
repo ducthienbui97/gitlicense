@@ -99,6 +99,10 @@ textarea {
     color: rgba(255, 255, 255, .5);
 }
 
+.credit {
+    font-size: 0.7em;
+}
+
 
 /*
  * Affix and center
