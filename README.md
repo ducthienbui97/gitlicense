@@ -1,4 +1,5 @@
 # Git License
+
 [![GitLicense](https://gitlicense.com/badge/ducthienbui97/gitlicense)](https://gitlicense.com/license/ducthienbui97/gitlicense)
 [![Code Climate](https://codeclimate.com/github/ducthienbui97/gitlicense/badges/gpa.svg)](https://codeclimate.com/github/ducthienbui97/gitlicense)
 [![Build Status](https://travis-ci.org/ducthienbui97/gitlicense.svg?branch=master)](https://travis-ci.org/ducthienbui97/gitlicense)
@@ -11,12 +12,13 @@ License badge for your Github repos.
 Git License give you a easy way to display license on github.
 We use github license api to get license of you repo.
 
-#### Markdown
+### Markdown
 
 ```md
 [![GitLicense](https://gitlicense.com/badge/:user/:repo)](https://gitlicense.com/license/:user/:repo)
 ```
-#### HTML
+
+### HTML
 
 ``` html
 <a href="https://gitlicense.com/license/:user/:repo">
@@ -24,7 +26,7 @@ We use github license api to get license of you repo.
 </a>
 ```
 
-#### RST
+### RST
 
 ``` rest
 .. image:: https://gitlicense.com/badge/:user/:repo
@@ -43,8 +45,10 @@ If Github api can't provide your repo's license, your repo have to have a ```.gi
 Example can be found in [this file](.gitlicense)
 
 ## Todo
+
 - Add more test.
 
 ## Credit
+
 - [Shields.io](https://github.com/badges) for the badges
 - [Hapi](https://github.com/hapijs) for server framwork
