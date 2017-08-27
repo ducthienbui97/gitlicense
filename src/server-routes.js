@@ -15,7 +15,7 @@ server.route({
             protocol
         });
     }
-})
+});
 
 server.route({
     path: "/{path*}",
@@ -23,7 +23,7 @@ server.route({
     handler: (request, reply) => {
         reply.redirect("/");
     }
-})
+});
 
 server.route({
     path: "/assets/{path*}",
@@ -35,7 +35,7 @@ server.route({
             index: false
         }
     }
-})
+});
 
 server.route({
     path: "/badge/{account}/{repo}",

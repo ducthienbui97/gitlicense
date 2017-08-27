@@ -9,13 +9,13 @@ const extractLicense = (content) => {
             return {
                 license: content["license"],
                 url: content["url"]
-            }
+            };
         } else {
             const url = "https://spdx.org/licenses/" + content.license + ".html";
             return {
                 license: content["license"],
                 url
-            }
+            };
         }
     }
     throw new Error("No license declared");
@@ -47,7 +47,7 @@ const getLicense = (account, repo, next) => {
                 .catch((err) => {
                     next(err, null);
                 });
-        })
+        });
 };
 
 const getBadge = (license, color, next) => {
