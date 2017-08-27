@@ -35,7 +35,8 @@ If Github api can't provide your repo's license, your repo have to have a ```.gi
 
 ``` json
 {
-    "License name" : "License url"
+    "license" : "License name"
+    "url" : "License url" <optional>
 }
 ```
 

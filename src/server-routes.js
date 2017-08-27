@@ -77,7 +77,13 @@ server.route({
         const { account, repo } = request.params;
         const { host } = request.info;
         const protocol = request.headers['x-forwarded-proto'] || request.connection.info.protocol
-        reply.view('template', { account, repo, host, protocol });
+        server.methods.getLicense(account, repo, (err, result) => {
+            if (err) {
+                reply.redirect('/');
+            } else {
+                reply.view('template', { account, repo, host, protocol });
+            }
+        })
     }
 })
 module.exports = server;

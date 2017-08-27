@@ -10,14 +10,8 @@ const getLicense = (account, repo, next) =>{
     }
     axios.get(githubApiUrl + '/contents/.gitlicense'+ OAuth2)
     .then((res) => {
-        content = JSON.parse(base64.decode(res.data.content));
-        for(let license in content){
-            const url = content[license];
-            next(null,{
-                license: license,
-                url: url
-                });
-            }
+        const content = JSON.parse(base64.decode(res.data.content));
+        next(null,extractLicense(content));
         })
     .catch((err) => {
         axios.get(githubApiUrl + '/license' + OAuth2,{
@@ -33,6 +27,24 @@ const getLicense = (account, repo, next) =>{
             next(err,null);
         });
     })
+}
+
+const extractLicense = (content) => {
+    if('license' in content){
+        if('url' in content)
+            return {
+                license: content['license'],
+                url: content['url']
+            }
+        else{
+            const url = 'https://spdx.org/licenses/' + content.license + '.html';
+            return {
+                license: content['license'],
+                url
+            }
+        }
+    }
+    throw new Error('No license declared');
 }
 
 const getBadge = (license, color, next) =>{
