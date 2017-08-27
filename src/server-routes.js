@@ -1,28 +1,33 @@
-const server = require('./server-methods');
-const config = require('./config');
-const util = require('./util');
+const server = require("./server-methods");
+const config = require("./config");
+const util = require("./util");
 
 server.route({
-    path: '/',
-    method: 'GET',
+    path: "/",
+    method: "GET",
     handler: (request, reply) => {
-        const { host } = request.info;
-        const protocol = request.headers['x-forwarded-proto'] || request.connection.info.protocol
-        reply.view('index', { host, protocol });
+        const {
+            host
+        } = request.info;
+        const protocol = request.headers["x-forwarded-proto"] || request.connection.info.protocol
+        reply.view("index", {
+            host,
+            protocol
+        });
     }
 })
 
 server.route({
-    path: '/{path*}',
-    method: 'GET',
+    path: "/{path*}",
+    method: "GET",
     handler: (request, reply) => {
-        reply.redirect('/');
+        reply.redirect("/");
     }
 })
 
 server.route({
-    path: '/assets/{path*}',
-    method: 'GET',
+    path: "/assets/{path*}",
+    method: "GET",
     handler: {
         directory: {
             path: config.staticFiles,
@@ -33,11 +38,17 @@ server.route({
 })
 
 server.route({
-    path: '/badge/{account}/{repo}',
-    method: 'GET',
+    path: "/badge/{account}/{repo}",
+    method: "GET",
     handler: (request, reply) => {
-        const { account, repo } = request.params;
-        const { errorBadge, returnType } = config.badge;
+        const {
+            account,
+            repo
+        } = request.params;
+        const {
+            errorBadge,
+            returnType
+        } = config.badge;
         const color = util.getColor(request.query.color);
         server.methods.getLicense(account, repo, (err, result) => {
             if (err) {
@@ -56,13 +67,16 @@ server.route({
 });
 
 server.route({
-    path: '/license/{account}/{repo}',
-    method: 'GET',
+    path: "/license/{account}/{repo}",
+    method: "GET",
     handler: (request, reply) => {
-        const { account, repo } = request.params;
+        const {
+            account,
+            repo
+        } = request.params;
         server.methods.getLicense(account, repo, (err, result) => {
             if (err) {
-                reply.redirect('/');
+                reply.redirect("/");
             } else {
                 reply.redirect(result.url);
             }
@@ -71,17 +85,27 @@ server.route({
 })
 
 server.route({
-    path: '/repository/{account}/{repo}',
-    method: 'GET',
+    path: "/repository/{account}/{repo}",
+    method: "GET",
     handler: (request, reply) => {
-        const { account, repo } = request.params;
-        const { host } = request.info;
-        const protocol = request.headers['x-forwarded-proto'] || request.connection.info.protocol
+        const {
+            account,
+            repo
+        } = request.params;
+        const {
+            host
+        } = request.info;
+        const protocol = request.headers["x-forwarded-proto"] || request.connection.info.protocol
         server.methods.getLicense(account, repo, (err, result) => {
             if (err) {
-                reply.redirect('/');
+                reply.redirect("/");
             } else {
-                reply.view('template', { account, repo, host, protocol });
+                reply.view("template", {
+                    account,
+                    repo,
+                    host,
+                    protocol
+                });
             }
         })
     }
