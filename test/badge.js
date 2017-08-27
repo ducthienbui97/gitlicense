@@ -18,9 +18,10 @@ lab.experiment("Get badge", () => {
             done();
         });
     });
-    lab.test("server to return svg file with this repo", { timeout: 5000 }, (done) => {
-        const user = 'ducthienbui97'; //random user
-        const repo = 'gitlicense'; //random repo
+
+    lab.test("server to return svg file with 'BSD 3-Clause' license from this repo .gitlicense", { timeout: 5000 }, (done) => {
+        const user = 'ducthienbui97';
+        const repo = 'gitlicense';
         const options = {
             method: "GET",
             url: "/badge/" + user + "/" + repo
@@ -29,12 +30,31 @@ lab.experiment("Get badge", () => {
             expect(response.statusCode).to.equal(200);
             expect(response.headers['content-type']).to.equal('image/svg+xml');
             expect(response.result).to.include('license');
+            expect(response.result).to.include('BSD 3-Clause');
             done();
         });
     });
+
+    lab.test("server to return svg file with 'MIT' license from lmgtfy-react repo thru GitHub api", { timeout: 5000 }, (done) => {
+        const user = 'ducthienbui97';
+        const repo = 'lmgtfy-react'; 
+        const options = {
+            method: "GET",
+            url: "/badge/" + user + "/" + repo
+        };
+        server.inject(options, function(response) {
+            expect(response.statusCode).to.equal(200);
+            expect(response.headers['content-type']).to.equal('image/svg+xml');
+            expect(response.result).to.include('license');
+            expect(response.result).to.include('MIT');
+            done();
+        });
+    });
+    
+
     lab.test("server return value with color = red", { timeout: 5000 }, (done) => {
-        const user = 'ducthienbui97'; //random user
-        const repo = 'gitlicense'; //random repo
+        const user = 'ducthienbui97';
+        const repo = 'gitlicense'; 
         const options = {
             method: "GET",
             url: "/badge/" + user + "/" + repo + "?color=red"
@@ -47,8 +67,8 @@ lab.experiment("Get badge", () => {
         });
     });
     lab.test("server return value with color = 0f0f0f", { timeout: 5000 }, (done) => {
-        const user = 'ducthienbui97'; //random user
-        const repo = 'gitlicense'; //random repo
+        const user = 'ducthienbui97';
+        const repo = 'gitlicense'; 
         const options = {
             method: "GET",
             url: "/badge/" + user + "/" + repo + "?color=0f0f0f"
