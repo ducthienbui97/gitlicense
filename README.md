@@ -35,16 +35,15 @@ If Github api can't provide your repo's license, your repo have to have a ```.gi
 
 ``` json
 {
-    "license" : "License name"
-    "url" : "License url" <optional>
+    "license" : "License name",
+    "url" : "License url"
 }
 ```
 
 Example can be found in [this file](.gitlicense)
 
-## TODO
+## Todo
 - Add more test.
-- Develop front end pages.
 
 ## Credit
 - [Shields.io](https://github.com/badges) for the badges
