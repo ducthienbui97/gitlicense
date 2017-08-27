@@ -65,9 +65,9 @@ const getBadge = (license, color, next) => {
                 } else {
                     next(null, svg);
                 }
-            })
+            });
         }
-    })
+    });
 };
 
 const getColor = (query) => {
@@ -85,4 +85,4 @@ module.exports = {
     getBadge,
     getLicense,
     getColor
-}
+};

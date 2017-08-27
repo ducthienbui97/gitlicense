@@ -60,9 +60,9 @@ server.route({
                     } else {
                         reply(result).type(returnType);
                     }
-                })
+                });
             }
-        })
+        });
     }
 });
 
@@ -80,9 +80,9 @@ server.route({
             } else {
                 reply.redirect(result.url);
             }
-        })
+        });
     }
-})
+});
 
 server.route({
     path: "/repository/{account}/{repo}",
@@ -107,7 +107,7 @@ server.route({
                     protocol
                 });
             }
-        })
+        });
     }
 });
 
