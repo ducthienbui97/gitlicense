@@ -2,7 +2,6 @@ const Code = require('code');
 const expect = Code.expect;
 const server = require('../src/start');
 const lab = exports.lab = require('lab').script();
-const path = require('path');
 
 lab.experiment("Get home page", () => {
     lab.test("server to redirect to home page on abitrary link", { timeout: 5000 }, (done) => {
@@ -23,7 +22,7 @@ lab.experiment("Get home page", () => {
         };
         server.inject(options, function(response) {
             expect(response.statusCode).to.equal(200);
-            expect(response.result).to.include('<title>Git License</title>');
+            expect(response.result).to.include('Simple way to display your license badge.');
             done();
         });
     });
