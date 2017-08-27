@@ -28,7 +28,7 @@ lab.experiment("Get badge", () => {
         server.inject(options, function(response) {
             expect(response.statusCode).to.equal(200);
             expect(response.headers['content-type']).to.equal('image/svg+xml');
-            expect(response.result).to.include('BSD 3-Clause');
+            expect(response.result).to.include('license');
             done();
         });
     });
