@@ -4,6 +4,7 @@
 [![Code Climate](https://codeclimate.com/github/ducthienbui97/gitlicense/badges/gpa.svg)](https://codeclimate.com/github/ducthienbui97/gitlicense)
 [![Build Status](https://travis-ci.org/ducthienbui97/gitlicense.svg?branch=master)](https://travis-ci.org/ducthienbui97/gitlicense)
 [![codecov](https://codecov.io/gh/ducthienbui97/gitlicense/branch/master/graph/badge.svg)](https://codecov.io/gh/ducthienbui97/gitlicense)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e5eae132f07d4853a80dee106b481ec4)](https://www.codacy.com/app/ducthienbui97/gitlicense?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ducthienbui97/gitlicense&amp;utm_campaign=Badge_Grade)
 
 License badge for your Github repos.
 

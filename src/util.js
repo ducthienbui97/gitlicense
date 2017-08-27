@@ -5,12 +5,12 @@ const badge = require("gh-badges");
 
 const extractLicense = (content) => {
     if ("license" in content) {
-        if ("url" in content)
+        if ("url" in content) {
             return {
                 license: content["license"],
                 url: content["url"]
             }
-        else {
+        } else {
             const url = "https://spdx.org/licenses/" + content.license + ".html";
             return {
                 license: content["license"],
@@ -19,7 +19,7 @@ const extractLicense = (content) => {
         }
     }
     throw new Error("No license declared");
-}
+};
 
 const getLicense = (account, repo, next) => {
     const githubApiUrl = "https://api.github.com/repos/" + account + "/" + repo;
@@ -48,7 +48,7 @@ const getLicense = (account, repo, next) => {
                     next(err, null);
                 });
         })
-}
+};
 
 const getBadge = (license, color, next) => {
     badge.loadFont(config.badge.font, (err) => {
@@ -68,14 +68,19 @@ const getBadge = (license, color, next) => {
             })
         }
     })
-}
+};
 
 const getColor = (query) => {
     const color = query || "brightgreen";
-    return config.badge.colors[color] || {
-        "colorB": color
-    };
-}
+    if (color in config.badge.colors) {
+        return config.badge.colors[color];
+    } else {
+        return {
+            "colorB": color
+        };
+    }
+};
+
 module.exports = {
     getBadge,
     getLicense,

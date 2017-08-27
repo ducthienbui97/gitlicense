@@ -9,8 +9,9 @@ server.register([
         require("vision")
     ],
     (err) => {
-        if (err)
+        if (err) {
             throw err;
+        }
         server.views({
             engines: {
                 html: require("handlebars")

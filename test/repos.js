@@ -36,5 +36,5 @@ lab.experiment("Get repo url", () => {
             expect(response.result).to.include("<h2>HTML:</h2>");
             done();
         });
-    })
+    });
 });

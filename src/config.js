@@ -6,7 +6,8 @@ const serverMethod = {
         expiresIn: 86400000,
         generateTimeout: false
     }
-}
+};
+
 const connection = {
     host: process.env.HOST || "0.0.0.0",
     port: process.env.PORT || 3000,
@@ -17,7 +18,8 @@ const connection = {
     routes: {
         cors: true
     }
-}
+};
+
 const server = {
     cache: [{
         name: "diskCache",
@@ -26,7 +28,8 @@ const server = {
         cleanEvery: 86400000,
         partition: "cache"
     }]
-}
+};
+
 const badge = {
     errorBadge: path.join(__dirname, "../public/assets/problem-unknown-red.svg"),
     font: path.join(__dirname, "../public/assets/OpenSans/OpenSans-ExtraBold.ttf"),
@@ -66,7 +69,7 @@ const badge = {
             "colorB": "#9f9f9f"
         }
     }
-}
+};
 
 const staticFiles = path.join(__dirname, "../public/assets");
 module.exports = {
@@ -75,4 +78,4 @@ module.exports = {
     connection,
     badge,
     staticFiles
-}
+};

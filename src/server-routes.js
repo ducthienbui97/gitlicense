@@ -9,7 +9,7 @@ server.route({
         const {
             host
         } = request.info;
-        const protocol = request.headers["x-forwarded-proto"] || request.connection.info.protocol
+        const protocol = request.headers["x-forwarded-proto"] || request.connection.info.protocol;
         reply.view("index", {
             host,
             protocol
@@ -95,7 +95,7 @@ server.route({
         const {
             host
         } = request.info;
-        const protocol = request.headers["x-forwarded-proto"] || request.connection.info.protocol
+        const protocol = request.headers["x-forwarded-proto"] || request.connection.info.protocol;
         server.methods.getLicense(account, repo, (err, result) => {
             if (err) {
                 reply.redirect("/");
@@ -109,5 +109,6 @@ server.route({
             }
         })
     }
-})
+});
+
 module.exports = server;

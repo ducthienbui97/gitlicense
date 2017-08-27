@@ -33,5 +33,5 @@ lab.experiment("Get license url", () => {
             expect(response.headers.location).to.equal("https://github.com/ducthienbui97/gitlicense/blob/master/LICENSE");
             done();
         });
-    })
+    });
 });

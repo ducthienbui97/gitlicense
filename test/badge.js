@@ -89,7 +89,8 @@ lab.experiment("Get badge", () => {
             expect(response.result).to.include("0f0f0f");
             done();
         });
-    })
+    });
+
     lab.test("server return value with color = random", {
         timeout: 5000
     }, (done) => {
@@ -106,5 +107,6 @@ lab.experiment("Get badge", () => {
             expect(response.result).to.include(color);
             done();
         });
-    })
+    });
+
 });
