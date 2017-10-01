@@ -21,7 +21,7 @@
 
 <script>
     function search() {
-        infos = document.getElementById('form-input').value.split("/");
+        infos = document.getElementById('form-input').value.replace(/^(?:http(?:s)?:\/\/)?(?:[^.]+\.)?github\.com\//,'').split("/");
         if (infos.length === 2)
             location = 'repository/' + infos[0] + '/' + infos[1];
         return false;

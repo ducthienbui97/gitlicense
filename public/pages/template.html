@@ -1,3 +1,6 @@
+<script>
+    var clipboard = new Clipboard('.btn');
+</script>
 <h1 class="cover-heading">
     {{account}}/{{repo}}
 </h1>
@@ -10,20 +13,29 @@
 </p>
 <h2>Markdown:</h2>
 <div class="input-group">
-    <textarea class="form-control" readonly>
+    <textarea class="form-control" id="md" readonly>
 [![GitLicense](https://gitlicense.com/badge/{{account}}/{{repo}})](https://gitlicense.com/license/{{account}}/{{repo}})
     </textarea>
+    <button class="btn btn-default" data-clipboard-target="#md">
+        <i class="fa fa-copy"></i>
+    </button>
 </div>
 <h2>reStructuredText:</h2>
 <div class="input-group">
-    <textarea class="form-control" readonly>
+    <textarea class="form-control" id="re" readonly>
 .. image:: https://gitlicense.com/badge/{{account}}/{{repo}}
   :target: https://gitlicense.com/license/{{account}}/{{repo}}
     </textarea>
+    <button class="btn btn-default" data-clipboard-target="#re">
+        <i class="fa fa-copy"></i>
+    </button>
 </div>
 <h2>HTML:</h2>
 <div class="input-group">
-    <textarea class="form-control" readonly>
+    <textarea class="form-control" id="ht" readonly>
 &lt;a href='https://gitlicense.com/license/{{account}}/{{repo}}'&gt;&lt;img src='https://gitlicense.com/badge/{{account}}/{{repo}}'/&gt;&lt;/a&gt;
     </textarea>
+    <button class="btn btn-default" data-clipboard-target="#ht">
+        <i class="fa fa-copy"></i>
+    </button>
 </div>
