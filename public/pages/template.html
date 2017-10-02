@@ -4,37 +4,30 @@
 <h1 class="cover-heading">
     {{account}}/{{repo}}
 </h1>
-<p class="lead">
+<p class="lead badges">
     <a href="https://gitlicense.com/license/{{account}}/{{repo}}/" style="margin: auto;">
         <img src="https://gitlicense.com/badge/{{account}}/{{repo}}/" />
         <img src="https://gitlicense.com/badge/{{account}}/{{repo}}?color=red" />
         <img src="https://gitlicense.com/badge/{{account}}/{{repo}}?color=blue" />
     </a>
 </p>
-<h2>Markdown:</h2>
+<h2>Markdown</h2>
 <div class="input-group">
-    <textarea class="form-control" id="md" readonly>
-[![GitLicense](https://gitlicense.com/badge/{{account}}/{{repo}})](https://gitlicense.com/license/{{account}}/{{repo}})
-    </textarea>
+    <input type="text" class="form-control" id="md" value="[![GitLicense](https://gitlicense.com/badge/{{account}}/{{repo}})](https://gitlicense.com/license/{{account}}/{{repo}})" readonly />
     <button class="btn btn-default" data-clipboard-target="#md">
         <i class="fa fa-copy"></i>
     </button>
 </div>
-<h2>reStructuredText:</h2>
+<h2>reStructuredText</h2>
 <div class="input-group">
-    <textarea class="form-control" id="re" readonly>
-.. image:: https://gitlicense.com/badge/{{account}}/{{repo}}
-  :target: https://gitlicense.com/license/{{account}}/{{repo}}
-    </textarea>
+    <input type="text" class="form-control" id="re" value=".. image:: https://gitlicense.com/badge/{{account}}/{{repo}} :target: https://gitlicense.com/license/{{account}}/{{repo}}" readonly />
     <button class="btn btn-default" data-clipboard-target="#re">
         <i class="fa fa-copy"></i>
     </button>
 </div>
-<h2>HTML:</h2>
+<h2>HTML</h2>
 <div class="input-group">
-    <textarea class="form-control" id="ht" readonly>
-&lt;a href='https://gitlicense.com/license/{{account}}/{{repo}}'&gt;&lt;img src='https://gitlicense.com/badge/{{account}}/{{repo}}'/&gt;&lt;/a&gt;
-    </textarea>
+    <input type="text" class="form-control" id="ht" value="&lt;a href='https://gitlicense.com/license/{{account}}/{{repo}}'&gt;&lt;img src='https://gitlicense.com/badge/{{account}}/{{repo}}'/&gt;&lt;/a&gt;" readonly>
     <button class="btn btn-default" data-clipboard-target="#ht">
         <i class="fa fa-copy"></i>
     </button>
