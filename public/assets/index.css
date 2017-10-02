@@ -43,7 +43,7 @@ body {
     margin: 0;
 }
 
-textarea.form-control {
+.copy-field {
     font-family: monospace;
     resize: none;
     overflow: hidden;
