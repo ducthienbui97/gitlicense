@@ -43,10 +43,12 @@ body {
     margin: 0;
 }
 
-textarea {
+textarea.form-control {
+    font-family: monospace;
     resize: none;
     overflow: hidden;
-    height: 5rem;
+    height: 3.5rem;
+    line-height: 1.5;
 }
 
 .input-group {
