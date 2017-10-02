@@ -4,37 +4,36 @@
 <h1 class="cover-heading">
     {{account}}/{{repo}}
 </h1>
-<p class="lead">
+<p class="lead badges">
     <a href="https://gitlicense.com/license/{{account}}/{{repo}}/" style="margin: auto;">
         <img src="https://gitlicense.com/badge/{{account}}/{{repo}}/" />
         <img src="https://gitlicense.com/badge/{{account}}/{{repo}}?color=red" />
         <img src="https://gitlicense.com/badge/{{account}}/{{repo}}?color=blue" />
     </a>
 </p>
-<h2>Markdown:</h2>
+<h2>Markdown</h2>
 <div class="input-group">
-    <textarea class="form-control" id="md" readonly>
+    <textarea class="form-control copy-field" id="md" readonly>
 [![GitLicense](https://gitlicense.com/badge/{{account}}/{{repo}})](https://gitlicense.com/license/{{account}}/{{repo}})
     </textarea>
     <button class="btn btn-default" data-clipboard-target="#md">
         <i class="fa fa-copy"></i>
     </button>
 </div>
-<h2>reStructuredText:</h2>
+<h2>reStructuredText</h2>
 <div class="input-group">
-    <textarea class="form-control" id="re" readonly>
+    <textarea class="form-control copy-field" id="re" readonly>
 .. image:: https://gitlicense.com/badge/{{account}}/{{repo}}
-  :target: https://gitlicense.com/license/{{account}}/{{repo}}
-    </textarea>
+  :target: https://gitlicense.com/license/{{account}}/{{repo}}</textarea>
     <button class="btn btn-default" data-clipboard-target="#re">
         <i class="fa fa-copy"></i>
     </button>
 </div>
-<h2>HTML:</h2>
+<h2>HTML</h2>
 <div class="input-group">
-    <textarea class="form-control" id="ht" readonly>
+    <textarea class="form-control copy-field" id="ht" readonly>
 &lt;a href='https://gitlicense.com/license/{{account}}/{{repo}}'&gt;&lt;img src='https://gitlicense.com/badge/{{account}}/{{repo}}'/&gt;&lt;/a&gt;
-    </textarea>
+    </textarea>        
     <button class="btn btn-default" data-clipboard-target="#ht">
         <i class="fa fa-copy"></i>
     </button>
