@@ -31,9 +31,9 @@ lab.experiment("Get repo url", () => {
         server.inject(options, function (response) {
             expect(response.statusCode).to.equal(200);
             expect(response.result).to.include("ducthienbui97/gitlicense");
-            expect(response.result).to.include("<h2>Markdown:</h2>");
-            expect(response.result).to.include("<h2>reStructuredText:</h2>");
-            expect(response.result).to.include("<h2>HTML:</h2>");
+            expect(response.result).to.include("<h2>Markdown</h2>");
+            expect(response.result).to.include("<h2>reStructuredText</h2>");
+            expect(response.result).to.include("<h2>HTML</h2>");
             done();
         });
     });
