@@ -61,8 +61,7 @@ textarea {
 }
 
 .site-wrapper-inner {
-    display: table-cell;
-    vertical-align: top;
+    vertical-align: middle;
 }
 
 .cover-container {
@@ -90,6 +89,9 @@ textarea {
     padding: 0 1.5rem;
 }
 
+.cover-container {
+    max-width: 42rem;
+}
 
 /*
  * Footer
@@ -97,6 +99,7 @@ textarea {
 
 .mastfoot {
     color: rgba(255, 255, 255, .5);
+    max-width: 42rem;
 }
 
 .credit {
@@ -114,10 +117,6 @@ textarea {
         position: fixed;
         bottom: 0;
     }
-    /* Start the vertical centering */
-    .site-wrapper-inner {
-        vertical-align: middle;
-    }
     /* Handle the widths */
     .mastfoot,
     .cover-container {
@@ -126,9 +125,8 @@ textarea {
     }
 }
 
-@media (min-width: 62em) {
-    .mastfoot,
-    .cover-container {
-        width: 42rem;
+@media (min-height: 450px) {
+    .mastfoot {
+      position: relative;
     }
 }
