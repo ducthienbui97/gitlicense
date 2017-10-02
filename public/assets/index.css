@@ -44,7 +44,7 @@ body {
 textarea {
     resize: none;
     overflow: hidden;
-    height: 5 rem;
+    height: 5rem;
 }
 
 
@@ -131,4 +131,30 @@ textarea {
     .cover-container {
         width: 42rem;
     }
+}
+
+/* allow headings to wrap */
+.cover-heading, h2 {
+    word-wrap: break-word;
+}
+
+/*
+ * assume mobile if < 768px
+ */
+@media (max-width: 768px) {
+
+    /* enforce max width as 100% less 2x 1.5rem side margins */
+    .cover-heading, h2 {
+        width: calc(100vw - 3rem);
+    }
+
+    /* reduce font size slightly for mobile */
+    .cover-heading {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
 }
