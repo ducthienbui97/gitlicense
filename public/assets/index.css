@@ -49,6 +49,8 @@ body {
     overflow: hidden;
     height: 3.5rem;
     line-height: 1.5;
+    border-top: none;
+    border-bottom: none;
 }
 
 .input-group {
