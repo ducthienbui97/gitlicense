@@ -41,9 +41,9 @@ function resizeAll () {
     var fields = document.querySelectorAll(".copy-field");
 
     // Iterate over each element and resize.
-    for (var i = 0; i < fields.length; i++) {
-        resizeTextArea(fields[i]);
-    }
+    fields.map(function (field) {
+        resizeTextArea(field);
+    });
 
 }
 
