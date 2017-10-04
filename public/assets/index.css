@@ -64,6 +64,7 @@ h2 {
 .copy-button {
     padding: 0 1rem;
     cursor: pointer;
+    background: #cdd4db;
     background: hsl(210, 16%, 83%);
 }
 
