@@ -43,18 +43,36 @@ body {
     margin: 0;
 }
 
+h2 {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 1rem;
+}
+
 .copy-field {
     font-family: monospace;
     resize: none;
     overflow: hidden;
-    height: 3.5rem;
-    line-height: 1.5;
-    border-top: none;
-    border-bottom: none;
+    line-height: 1.65;
+    padding: 0.5rem 0.75rem;
+    border: none;
+    word-break: break-all;
+}
+
+.copy-button {
+    padding: 0 1rem;
+    cursor: pointer;
+    background: hsl(210, 16%, 83%);
 }
 
 .input-group {
     margin-bottom: 3rem;
+}
+
+.input-group .btn {
+    border: none;
 }
 
 .site-wrapper {
@@ -96,11 +114,4 @@ body {
 .cover-heading {
     word-wrap: break-word;
     line-height: 1.4;
-}
-
-h2 {
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
