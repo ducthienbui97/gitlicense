@@ -37,14 +37,8 @@ function resizeTextArea (elem) {
  * Resizes all textareas to match their content.
  */
 function resizeAll () {
-
     var fields = document.querySelectorAll(".copy-field");
-
-    // Iterate over each element and resize.
-    fields.map(function (field) {
-        resizeTextArea(field);
-    });
-
+    fields.map(resizeTextArea);
 }
 
 
