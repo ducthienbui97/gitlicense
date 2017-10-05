@@ -70,8 +70,9 @@ const getBadge = (license, color, next) => {
     });
 };
 
-const getColor = (query) => {
-    const color = query || "brightgreen";
+const defaultColor = "brightgreen";
+
+const getColor = (color = defaultColor) => {
     if (color in config.badge.colors) {
         return config.badge.colors[color];
     } else {
@@ -81,8 +82,17 @@ const getColor = (query) => {
     }
 };
 
+const getColorName = (color) => {
+  if (color in config.badge.colors) {
+    return color;
+  }
+  return defaultColor;
+};
+
+
 module.exports = {
     getBadge,
     getLicense,
-    getColor
+    getColor,
+    getColorName
 };
