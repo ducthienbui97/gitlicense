@@ -85,16 +85,19 @@ server.route({
 });
 
 server.route({
-    path: "/repository/{account}/{repo}",
+    path: "/repository/{account}/{repo}/{color?}",
     method: "GET",
     handler: (request, reply) => {
         const {
             account,
-            repo
+            repo,
+            color
         } = request.params;
         const {
             host
         } = request.info;
+
+        const defaultColor = util.getColorName(color);
         const protocol = request.headers["x-forwarded-proto"] || request.connection.info.protocol;
         server.methods.getLicense(account, repo, (err, result) => {
             if (err) {
@@ -104,7 +107,13 @@ server.route({
                     account,
                     repo,
                     host,
-                    protocol
+                    protocol,
+                    color: defaultColor,
+                    colors: Object.keys(config.badge.colors)
+                      .filter(name => ['grey', 'lightgrey'].indexOf(name) === -1)
+                      .map(name => {
+                      return {name, colorHex: config.badge.colors[name]['colorB']}
+                    })
                 });
             }
         });
