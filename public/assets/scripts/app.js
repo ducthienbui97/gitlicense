@@ -38,7 +38,7 @@ function resizeTextArea (elem) {
  */
 function resizeAll () {
     var fields = document.querySelectorAll(".copy-field");
-    fields.map(resizeTextArea);
+    fields.forEach(resizeTextArea);
 }
 
 
