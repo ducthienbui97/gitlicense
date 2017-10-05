@@ -92,6 +92,7 @@ server.route({
             account,
             repo
         } = request.params;
+        const color = request.query.color || 'green';
         const {
             host
         } = request.info;
@@ -104,7 +105,8 @@ server.route({
                     account,
                     repo,
                     host,
-                    protocol
+                    protocol,
+                    color
                 });
             }
         });
@@ -112,3 +114,4 @@ server.route({
 });
 
 module.exports = server;
+
