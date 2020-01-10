@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node src/start.js",
-    "test": "node node_modules/lab/bin/lab -c"
+    "test": "node node_modules/@hapi/lab/bin/lab -c -I"
   },
   "repository": {
     "type": "git",
@@ -24,20 +24,20 @@
   "dependencies": {
     "axios": "^0.18.1",
     "base-64": "^0.1.0",
-    "catbox-disk": "^2.0.9",
+    "catbox-disk": "^3.0.0",
     "code": "^4.1.0",
     "gh-badges": "^1.3.0",
     "handlebars": "^4.3.0",
-    "hapi": "^16.5.2",
-    "hoek": "^4.2.0",
-    "inert": "^4.2.1",
-    "joi": "^10.6.0",
-    "vision": "^4.1.1"
+    "@hapi/hapi": "^18.4.0",
+    "@hapi/hoek": "^8.5.0",
+    "inert": "^5.1.0",
+    "@hapi/joi": "^16.1.8",
+    "@hapi/vision": "^5.5.0"
   },
   "engines": {
     "node": ">=6.11.2"
   },
   "devDependencies": {
-    "lab": "^14.1.1"
+    "@hapi/lab": "^21.0.0"
   }
 }

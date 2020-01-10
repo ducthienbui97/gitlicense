@@ -1,11 +1,7 @@
-const server = require("./server-routes");
-const config = require("./config");
-server.start(function (err) {
-    if (err) {
-        console.log(err);
-    } else {
-        console.log("Server started: " + server.info.uri);
-    }
-});
 
-module.exports = server;
+const getServer = require("./server-routes");
+getServer().then((server) => server.start().then(function (err) {
+    console.log("Server started: " + server.info.uri);
+}).catch(err => console.log(err))).catch(err => console.log(err));
+
+module.exports = getServer;
