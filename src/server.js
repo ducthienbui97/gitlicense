@@ -1,4 +1,4 @@
-const hapi = require("hapi");
+const hapi = require("@hapi/hapi");
 const path = require("path");
 const config = require("./config");
 
@@ -6,7 +6,7 @@ const getServer = async () => {
     const server = new hapi.Server(config.server);
 
     await server.register([
-        require("vision"), 
+        require("@hapi/vision"), 
         require("inert")
     ]);
     server.views({

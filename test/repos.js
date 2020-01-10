@@ -1,7 +1,7 @@
 const Code = require("code");
 const expect = Code.expect;
 const getServer = require("../src/start");
-const lab = exports.lab = require("lab").script();
+const lab = exports.lab = require("@hapi/lab").script();
 
 lab.experiment("Get repo url", () => {
     let server;
