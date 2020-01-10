@@ -7,7 +7,7 @@ install:
   - yarn global add istanbul
   - yarn
 script:
-  - istanbul cover ./node_modules/lab/bin/lab --report lcovonly  -- -l && codecov
+  - yarn test
 branches:
   only:
     - master

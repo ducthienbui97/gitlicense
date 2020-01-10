@@ -7,7 +7,7 @@ const getServer = async () => {
 
     await server.register([
         require("@hapi/vision"), 
-        require("inert")
+        require("@hapi/inert")
     ]);
     server.views({
         engines: {
