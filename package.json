@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/ducthienbui97/gitlicense#readme",
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.18.1",
     "base-64": "^0.1.0",
     "catbox-disk": "^2.0.9",
     "code": "^4.1.0",
