@@ -1,6 +1,7 @@
 const path = require("path");
-
+const Disk = require("catbox-disk");
 const serverMethod = {
+    generateKey: (...array) => array.join(","),
     cache: {
         cache: "diskCache",
         expiresIn: 86400000,
@@ -8,7 +9,7 @@ const serverMethod = {
     }
 };
 
-const connection = {
+const server = {
     host: process.env.HOST || "0.0.0.0",
     port: process.env.PORT || 3000,
     router: {
@@ -17,16 +18,14 @@ const connection = {
     },
     routes: {
         cors: true
-    }
-};
-
-const server = {
+    },
     cache: [{
         name: "diskCache",
-        engine: require("catbox-disk"),
-        cachePath: path.join(__dirname, "cache"),
-        cleanEvery: 86400000,
-        partition: "cache"
+        engine: new Disk({
+            cachePath: path.join(__dirname, "cache"),
+            cleanEvery: 86400000,
+            partition: "cache"
+        })
     }]
 };
 
@@ -75,7 +74,6 @@ const staticFiles = path.join(__dirname, "../public/assets");
 module.exports = {
     server,
     serverMethod,
-    connection,
     badge,
     staticFiles
 };
