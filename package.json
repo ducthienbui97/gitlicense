@@ -27,7 +27,7 @@
     "@hapi/inert": "^6.0.0",
     "@hapi/joi": "^16.1.8",
     "@hapi/vision": "^5.5.0",
-    "axios": "^0.18.1",
+    "axios": "^1.6.4",
     "base-64": "^0.1.0",
     "catbox-disk": "^3.0.0",
     "code": "^4.1.0",
